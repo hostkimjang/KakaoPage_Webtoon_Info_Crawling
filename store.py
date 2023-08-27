@@ -25,3 +25,17 @@ def store_info(info_list):
     count = len(info_list)
     print(f"총 {count}개의 데이터가 저장되었습니다.")
     print("store is done")
+
+def store_final(info_list):
+    with open("kakao_webtoon_final.json", "wt", encoding="utf-8") as f:
+        json.dump(info_list, f, ensure_ascii=False, indent=4)
+    print("store is done")
+
+def load_data():
+    with open("kakao_webtoon_info.json", "rt", encoding="utf-8") as f:
+        data = json.load(f)
+        print("load is done")
+        count = len(data)
+        print(f"총 {count}개의 데이터가 로드되었습니다.")
+    return data
+

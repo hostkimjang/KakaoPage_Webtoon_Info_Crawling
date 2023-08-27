@@ -2,7 +2,10 @@ import pprint
 import time
 import requests
 from sort_data import sort_data
+from sort_data import info_supplement
 from store import store_info
+from store import load_data
+from store import store_final
 from bs4 import BeautifulSoup as bs
 
 url = 'https://page.kakao.com/graphql/'
@@ -712,9 +715,14 @@ def get_webtoon_info_full(last_num):
 
     store_info(webtoon_list)
 
+def get_webtoon_more_info(webtoon_list):
+    webtoon_list = load_data()
+    info_supplement(webtoon_list)
+    store_final(webtoon_list)
 
 
 webtoon_list = []
 last_num = 3
 #last_num = get_last_page_num()     #모든 웹툰의 정보를 얻을건가용? (사전 구동)
-get_webtoon_info_full(last_num)
+#get_webtoon_info_full(last_num)
+get_webtoon_more_info(webtoon_list)
